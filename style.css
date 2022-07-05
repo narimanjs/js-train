@@ -1,0 +1,24 @@
+body {
+    box-sizing: border-box;
+}
+.header {
+    /* background-color: aqua; */
+
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    color: rgb(227, 173, 107);
+}
+.header__nav-items {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    background-color: aqua;
+}
+.nav__link {
+    text-decoration: none;
+}
