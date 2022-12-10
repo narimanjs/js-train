@@ -1,34 +1,170 @@
-const btns = document.querySelectorAll('button'),
-      wrapper = document.querySelector('.btn-block');
-// console.log(btns[0].classList.length);
-// console.log(btns[1].classList.add('red'));
-// console.log(btns[0].classList.remove('blue'));
-// console.log(btns[0].classList.toggle('blue'));
-//  if (btns[1].classList.contains('red')) {
-//     console.log('redd');
-//  }
- btns[0].addEventListener('click', () => {
-    // if(!btns[1].classList.contains('red')) {
-    //     btns[1].classList.add('red');
-    // } else {
-    //     btns[1].classList.remove('red')
-    // }
-    btns[1].classList.toggle('red');
+// Импорт модуля
+// import {
+//   addProoductToCart,
+//   totalPrice,
+//   totalQuantity,
+// } from './shopping-cart.js';
+// addProoductToCart('shirt', 2);
+// console.log(totalPrice, totalQuantity);
+// import * as ShoppingCart from './shopping-cart.js';
 
- });
- 
- wrapper.addEventListener('click', (event) => {
-    // console.dir(event.target);    
-    if(event.target && event.target.matches('button')) {
-        console.log('hello!');
-    }
- });
-// btns.forEach(btn => {
-//     btn.addEventListener('click', () => {
-//         console.log('Hello!');
-//     })
-// });
+// console.log('Импорт модуля');
 
- const btn = document.createElement('button');
- btn.classList.add('red');
- wrapper.append(btn);
+// ShoppingCart.addProoductToCart('рубашка', 2);
+// console.log(ShoppingCart.totalPrice);
+
+import addToCart, { cart } from './shopping-cart.js';
+addToCart('рубашка', 2);
+addToCart('носки', 4);
+addToCart('трусы', 1);
+console.log(cart);
+/**
+ * 
+
+const result = await fetch('https://jsonplaceholder.typicode.com/posts');
+const data = await result.json();
+console.log(data);
+console.log('code after await');
+ */
+
+const getLastPost = async function () {
+  const result = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const data = await result.json();
+  //   console.log(data);
+  return { title: data.at(-1).title, postText: data.at(-1).body };
+};
+
+const lastPostData = getLastPost();
+console.log(lastPostData);
+// lastPostData.then(data => console.log(data));
+
+const lastPostData1 = await getLastPost();
+console.log(lastPostData1);
+// Импорт модуля
+
+// import {
+//   addProductToCart,
+//   totalPrice as price,
+//   quantity,
+// } from './shopping-cart.js';
+
+// // console.log(shippingCost);
+
+// addProductToCart('рубашка', 2);
+// console.log(price, quantity);
+
+// import * as ShoppingCart from './shopping-cart.js';
+
+// console.log('Импорт модуля');
+
+// ShoppingCart.addProductToCart('рубашка', 2);
+// console.log(ShoppingCart.totalPrice);
+
+// import addToCart, {
+//   addProductToCart,
+//   totalPrice as price,
+//   quantity,
+// } from './shopping-cart.js';
+
+// import addToCart, { cart } from './shopping-cart.js';
+
+// addToCart('рубашка', 2);
+// addToCart('носки', 2);
+// addToCart('трусы', 2);
+
+// console.log(cart);
+
+// // const result = await fetch('https://jsonplaceholder.typicode.com/posts');
+// // const data = await result.json();
+// // console.log(data);
+// // console.log('Код после await');
+
+// const getLastPost = async function () {
+//   const result = await fetch('https://jsonplaceholder.typicode.com/posts');
+//   const data = await result.json();
+//   console.log(data);
+
+//   return { title: data.at(-1).title, postText: data.at(-1).body };
+// };
+
+// const lastPostData = getLastPost();
+// console.log(lastPostData);
+// lastPostData.then(data => console.log(data));
+
+// const lastPostData1 = await getLastPost();
+// console.log(lastPostData1);
+
+///////////////////////////////////////////////
+// Шаблон Проектирования Модуль
+
+// const ShoppingCart1 = (function () {
+//   const cart = [];
+//   const shippingCost = 20;
+//   const totalPrice = 300;
+//   const totalQuantity = 10;
+//   const addProductToCart = function (product, quantity) {
+//     cart.push({ product, quantity });
+//     console.log(
+//       `${product} в количестве ${quantity} шт добавлено в корзину, цена доставки ${shippingCost}`
+//     );
+//   };
+
+//   const productOrderedMessage = function (product, quantity) {
+//     console.log(`${product} в количестве ${quantity} шт заказан`);
+//   };
+
+//   return {
+//     addProductToCart,
+//     cart,
+//     totalPrice,
+//     totalQuantity,
+//   };
+// })();
+
+// ShoppingCart1.addProductToCart('апельсин', 5);
+// ShoppingCart1.addProductToCart('кола', 1);
+// console.log(ShoppingCart1);
+
+///////////////////////////////////////////////
+// Модули CommonJS
+
+// Экспорт чего-либо
+// export.addProductToCart = function (product, quantity) {
+//       cart.push({ product, quantity });
+//       console.log(
+//         `${product} в количестве ${quantity} шт добавлено в корзину, цена доставки ${shippingCost}`
+//       );
+//     };
+
+// // Импорт
+// const { addProductToCart } = require('./shopping-cart.js');
+
+////////////////////////////////////////////////
+// Использование библиотеки lodash-es
+// import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+
+// import cloneDeep from 'lodash';
+
+// const state = {
+//   cart: [
+//     { product: 'яблоко', quantity: 5 },
+//     { product: 'апельсин', quantity: 3 },
+//   ],
+//   user: { loggedIn: true },
+// };
+// const stateCopy = Object.assign({}, state);
+// const stateDeepCopy = cloneDeep(state);
+// state.user.loggedIn = false;
+// console.log(stateCopy);
+// console.log(stateDeepCopy);
+
+// if (module.hot) {
+//   module.hot.accept();
+// }
+
+// Promise.resolve('Testing').then(a => console.log(a));
+
+// import 'core-js/stable';
+
+// // Полифиллинг асинхронных функций
+// import 'regenerator-runtime/runtime';
