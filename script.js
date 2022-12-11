@@ -1,4 +1,22 @@
 // Импорт модуля
+// Использование библиотеки loadash
+import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+
+const state = {
+  cart: [
+    { product: 'apple', quantity: 5 },
+    { product: 'orange', quantity: 3 },
+  ],
+  user: { loggedIn: true },
+};
+
+const stateCopy = Object.assign({}, state);
+const stateDeepCopy = cloneDeep(state);
+
+state.user.loggedIn = false;
+console.log(stateCopy);
+console.log(stateDeepCopy);
+
 // import {
 //   addProoductToCart,
 //   totalPrice,
@@ -12,20 +30,20 @@
 
 // ShoppingCart.addProoductToCart('рубашка', 2);
 // console.log(ShoppingCart.totalPrice);
-
+/**
 import addToCart, { cart } from './shopping-cart.js';
 addToCart('рубашка', 2);
 addToCart('носки', 4);
 addToCart('трусы', 1);
 console.log(cart);
-/**
+
  * 
 
 const result = await fetch('https://jsonplaceholder.typicode.com/posts');
 const data = await result.json();
 console.log(data);
 console.log('code after await');
- */
+
 
 const getLastPost = async function () {
   const result = await fetch('https://jsonplaceholder.typicode.com/posts');
@@ -40,6 +58,7 @@ console.log(lastPostData);
 
 const lastPostData1 = await getLastPost();
 console.log(lastPostData1);
+ */
 // Импорт модуля
 
 // import {
@@ -168,3 +187,31 @@ console.log(lastPostData1);
 
 // // Полифиллинг асинхронных функций
 // import 'regenerator-runtime/runtime';
+/**
+
+const ShoppingCart1 = (function () {
+  const cart = [];
+  const shippingCost = 20;
+  const totalPrice = 300;
+  const totalQuantity = 10;
+  const addProductToCart = function (product, quantity) {
+    cart.push({ product, quantity });
+    console.log(`${product} в количестве ${quantity} шт добавлено в корзину`);
+  };
+  const productOrderedMessage = function (product, quantity) {
+    cart.push({ product, quantity });
+    console.log(`${product} в количестве ${quantity} шт заказан`);
+  };
+  return {
+    addProductToCart,
+    cart,
+    totalPrice,
+    totalQuantity,
+  };
+})();
+
+ShoppingCart1.addProductToCart('coke', 1);
+ShoppingCart1.addProductToCart('orange', 5);
+
+console.log(ShoppingCart1);
+ */
