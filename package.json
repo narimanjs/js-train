@@ -4,7 +4,8 @@
   "description": "��#\u0000 \u0000j\u0000s\u0000-\u0000t\u0000r\u0000a\u0000i\u0000n\u0000\r\u0000 \u0000",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,8 @@
   "homepage": "https://github.com/narcash/js-train#readme",
   "dependencies": {
     "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
   }
 }
